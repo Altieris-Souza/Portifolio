@@ -52,7 +52,6 @@ export default function About() {
 
           <div className="grid md:grid-cols-2 gap-10">
             <motion.div variants={itemVariants} className="space-y-6">
-              {/* Photo container with stylized border */}
               <div className="relative mx-auto md:mx-0 mb-8 md:mb-0 w-48 h-48 md:w-64 md:h-64">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-teal-500 blur-md opacity-70 transform scale-105"></div>
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-500/30">

@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useLanguage } from "@/context/language-context"
-import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import LanguageSwitcher from "./language-switcher"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useLanguage } from "@/context/language-context";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import LanguageSwitcher from "./language-switcher";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const { t } = useLanguage()
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: t("nav.home"), href: "#home" },
@@ -32,15 +32,15 @@ export default function Navbar() {
     { name: t("nav.skills"), href: "#skills" },
     { name: t("nav.projects"), href: "#projects" },
     { name: t("nav.contact"), href: "#contact" },
-  ]
+  ];
 
   const scrollToSection = (href: string) => {
-    setIsOpen(false)
-    const element = document.querySelector(href)
+    setIsOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <motion.nav
@@ -56,15 +56,14 @@ export default function Navbar() {
           <span className="text-blue-500">Souza</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={(e) => {
-                e.preventDefault()
-                scrollToSection(item.href)
+                e.preventDefault();
+                scrollToSection(item.href);
               }}
               className="text-white hover:text-blue-400 transition-colors"
             >
@@ -77,13 +76,17 @@ export default function Navbar() {
         {/* Mobile Navigation Toggle */}
         <div className="md:hidden flex items-center">
           <LanguageSwitcher />
-          <Button variant="ghost" size="icon" className="text-white ml-2" onClick={() => setIsOpen(!isOpen)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white ml-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -97,8 +100,8 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection(item.href)
+                  e.preventDefault();
+                  scrollToSection(item.href);
                 }}
                 className="text-white hover:text-blue-400 transition-colors py-2 border-b border-gray-800"
               >
@@ -109,6 +112,5 @@ export default function Navbar() {
         </motion.div>
       )}
     </motion.nav>
-  )
+  );
 }
-

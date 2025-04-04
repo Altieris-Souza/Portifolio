@@ -1,52 +1,53 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useLanguage } from "@/context/language-context"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Mail, Phone, Linkedin, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import { useState } from "react";
+import { useLanguage } from "@/context/language-context";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
 
 export default function Contact() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
       title: "Mensagem enviada!",
       description: "Obrigado pelo contato. Responderei em breve.",
-    })
+    });
 
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
-  }
+    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(false);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,7 +57,7 @@ export default function Contact() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -65,7 +66,7 @@ export default function Contact() {
       y: 0,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   const contactInfo = [
     {
@@ -92,7 +93,7 @@ export default function Contact() {
       value: "Altieris-Souza",
       href: "https://github.com/Altieris-Souza",
     },
-  ]
+  ];
 
   return (
     <section id="contact" className="py-20 bg-black/50">
@@ -104,13 +105,19 @@ export default function Contact() {
           animate={inView ? "visible" : "hidden"}
           className="max-w-5xl mx-auto"
         >
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <motion.h2
+            variants={itemVariants}
+            className="text-3xl md:text-4xl font-bold mb-4 text-center"
+          >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-500">
               {t("contact.title")}
             </span>
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+          <motion.p
+            variants={itemVariants}
+            className="text-center text-gray-400 mb-12 max-w-2xl mx-auto"
+          >
             {t("contact.description")}
           </motion.p>
 
@@ -136,7 +143,10 @@ export default function Contact() {
             <motion.div variants={itemVariants}>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-400 mb-1"
+                  >
                     {t("contact.form.name")}
                   </label>
                   <Input
@@ -150,7 +160,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-400 mb-1"
+                  >
                     {t("contact.form.email")}
                   </label>
                   <Input
@@ -165,7 +178,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-400 mb-1"
+                  >
                     {t("contact.form.message")}
                   </label>
                   <Textarea
@@ -179,7 +195,11 @@ export default function Contact() {
                   />
                 </div>
 
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                >
                   {isSubmitting ? (
                     <span className="flex items-center">
                       <svg
@@ -214,6 +234,5 @@ export default function Contact() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

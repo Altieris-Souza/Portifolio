@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { ExternalLink, Github, Info } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { ExternalLink, Github, Info } from "lucide-react";
 
 type InteractiveCardProps = {
-  title: string
-  description: string
-  image: string
-  link: string
-  github?: string
-  technologies: string[]
-  visitLabel: string
-  detailedDescription?: string
-}
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  github?: string;
+  technologies: string[];
+  visitLabel: string;
+  detailedDescription?: string;
+};
 
 export default function InteractiveCard({
   title,
@@ -26,8 +26,8 @@ export default function InteractiveCard({
   visitLabel,
   detailedDescription,
 }: InteractiveCardProps) {
-  const [isFlipped, setIsFlipped] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
@@ -39,7 +39,6 @@ export default function InteractiveCard({
         className="w-full h-full relative preserve-3d transition-all duration-500"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
       >
-        {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden">
           <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
             <div className="relative h-48 overflow-hidden">
@@ -52,7 +51,10 @@ export default function InteractiveCard({
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
                 <div className="flex gap-2 flex-wrap">
                   {technologies.map((tech) => (
-                    <span key={tech} className="text-xs bg-blue-900/80 px-2 py-1 rounded-full">
+                    <span
+                      key={tech}
+                      className="text-xs bg-blue-900/80 px-2 py-1 rounded-full"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -73,7 +75,12 @@ export default function InteractiveCard({
                   {visitLabel}
                 </a>
                 {github && (
-                  <a href={github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white"
+                  >
                     <Github className="h-5 w-5" />
                   </a>
                 )}
@@ -82,15 +89,21 @@ export default function InteractiveCard({
           </div>
         </div>
 
-        {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden rotateY-180">
           <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-300 h-full p-6 flex flex-col">
-            <h3 className="text-xl font-bold mb-4 text-blue-400">{title} - Detalhes</h3>
-            <p className="text-gray-300 mb-4 flex-grow overflow-auto">{detailedDescription || description}</p>
+            <h3 className="text-xl font-bold mb-4 text-blue-400">
+              {title} - Detalhes
+            </h3>
+            <p className="text-gray-300 mb-4 flex-grow overflow-auto">
+              {detailedDescription || description}
+            </p>
             <div className="mt-auto">
               <div className="flex flex-wrap gap-2 mb-4">
                 {technologies.map((tech) => (
-                  <span key={tech} className="text-xs bg-blue-900/80 px-2 py-1 rounded-full">
+                  <span
+                    key={tech}
+                    className="text-xs bg-blue-900/80 px-2 py-1 rounded-full"
+                  >
                     {tech}
                   </span>
                 ))}
@@ -106,7 +119,12 @@ export default function InteractiveCard({
                   {visitLabel}
                 </a>
                 {github && (
-                  <a href={github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white"
+                  >
                     <Github className="h-5 w-5" />
                   </a>
                 )}
@@ -116,7 +134,6 @@ export default function InteractiveCard({
         </div>
       </motion.div>
 
-      {/* Flip button */}
       {isHovered && (
         <button
           onClick={() => setIsFlipped(!isFlipped)}
@@ -127,6 +144,5 @@ export default function InteractiveCard({
         </button>
       )}
     </div>
-  )
+  );
 }
-

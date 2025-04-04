@@ -1,47 +1,47 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function CursorEffect() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [cursorVariant, setCursorVariant] = useState("default")
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState("default");
 
   useEffect(() => {
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,
-      })
-    }
+      });
+    };
 
-    const mouseDown = () => setCursorVariant("click")
-    const mouseUp = () => setCursorVariant("default")
+    const mouseDown = () => setCursorVariant("click");
+    const mouseUp = () => setCursorVariant("default");
 
-    const handleLinkHover = () => setCursorVariant("hover")
-    const handleLinkLeave = () => setCursorVariant("default")
+    const handleLinkHover = () => setCursorVariant("hover");
+    const handleLinkLeave = () => setCursorVariant("default");
 
-    window.addEventListener("mousemove", mouseMove)
-    window.addEventListener("mousedown", mouseDown)
-    window.addEventListener("mouseup", mouseUp)
+    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousedown", mouseDown);
+    window.addEventListener("mouseup", mouseUp);
 
-    const links = document.querySelectorAll("a, button")
+    const links = document.querySelectorAll("a, button");
     links.forEach((link) => {
-      link.addEventListener("mouseenter", handleLinkHover)
-      link.addEventListener("mouseleave", handleLinkLeave)
-    })
+      link.addEventListener("mouseenter", handleLinkHover);
+      link.addEventListener("mouseleave", handleLinkLeave);
+    });
 
     return () => {
-      window.removeEventListener("mousemove", mouseMove)
-      window.removeEventListener("mousedown", mouseDown)
-      window.removeEventListener("mouseup", mouseUp)
+      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousedown", mouseDown);
+      window.removeEventListener("mouseup", mouseUp);
 
       links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleLinkHover)
-        link.removeEventListener("mouseleave", handleLinkLeave)
-      })
-    }
-  }, [])
+        link.removeEventListener("mouseenter", handleLinkHover);
+        link.removeEventListener("mouseleave", handleLinkLeave);
+      });
+    };
+  }, []);
 
   const variants = {
     default: {
@@ -66,11 +66,10 @@ export default function CursorEffect() {
       width: 32,
       scale: 0.8,
     },
-  }
+  };
 
-  // Only show on desktop
   if (typeof window !== "undefined" && window.innerWidth < 768) {
-    return null
+    return null;
   }
 
   return (
@@ -80,6 +79,5 @@ export default function CursorEffect() {
       animate={cursorVariant}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
     />
-  )
+  );
 }
-

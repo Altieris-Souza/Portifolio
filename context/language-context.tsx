@@ -84,7 +84,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
           en: "Course hours",
         },
         "about.hoursCardDescription": {
-          pt: "Desenvolvimento web e Officce 365",
+          pt: "Desenvolvimento Web e Office 365",
           en: "Web development and Office 365",
         },
         "about.projectsCard": {
@@ -109,7 +109,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         },
 
         "aboutCards.experience": {
-          pt: "Esperiência:",
+          pt: "Experiência:",
           en: "Experience:",
         },
 
