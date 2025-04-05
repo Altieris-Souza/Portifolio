@@ -30,19 +30,19 @@ export default function Projects() {
       description: t("projects.jsfilms.description"),
       detailedDescription:
         "Landing page profissional desenvolvida para uma empresa especializada em instalação de películas residenciais e automotivas. O projeto incluiu design responsivo, otimização para SEO e integração com formulário de contato.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/images/FundoJsFilms.png",
       link: "https://jsfilms.netlify.app/",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      technologies: ["Next", "Tailwind", "TypeScript"],
     },
     {
       id: "fortfert",
       title: t("projects.fortfert.title"),
       description: t("projects.fortfert.description"),
       detailedDescription:
-        "Site institucional para empresa de transporte de tomate e fertilizantes, com foco em apresentar a frota, serviços e facilitar o contato com clientes potenciais. Inclui galeria de imagens e informações detalhadas sobre a empresa.",
-      image: "/placeholder.svg?height=600&width=800",
+        "Site institucional para empresa de transporte de fertilizantes e produção de tomates, com foco em apresentar a frota, serviços e facilitar o contato com clientes potenciais. Inclui galeria de imagens e informações detalhadas sobre a empresa.",
+      image: "/images/FundoFortFert.png",
       link: "https://fortfert.netlify.app/",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      technologies: ["Next", "Tailwind", "TypeScript"],
     },
     {
       id: "converter",
@@ -50,9 +50,9 @@ export default function Projects() {
       description: t("projects.converter.description"),
       detailedDescription:
         "Aplicativo web para conversão de moedas em tempo real, utilizando APIs de cotação. Permite converter entre diversas moedas internacionais com interface intuitiva e responsiva.",
-      image: "/placeholder.svg?height=600&width=800",
-      link: "#",
-      technologies: ["React", "JavaScript", "API Integration"],
+      image: "/images/FundoConversorCambial.png",
+      link: "https://money-exchange-app-v2.vercel.app",
+      technologies: ["React", "TypeScript", "API Integration"],
     },
   ];
 
@@ -93,7 +93,7 @@ export default function Projects() {
             </span>
           </motion.h2>
 
-          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div key={project.id} variants={itemVariants}>
                 <InteractiveCard
@@ -108,7 +108,7 @@ export default function Projects() {
                 />
               </motion.div>
             ))}
-          </div> */}
+          </div>
         </motion.div>
       </div>
     </section>
